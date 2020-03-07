@@ -1,21 +1,38 @@
 {% extends '_layouts/base.nunjucks' %}
 
+##html templating tools - django, handlbars, nnjucks
+##these are template tags
+
 {% import "_modules/link/link.nunjucks" as link %}
 
 {% block content %}
-<div class="main-container">
-  <div class="yeogurt-info">
-    <h1>Welcome to Yeogurt!</h1>
-    <p>
-      Take a look at the {{link.content({
-        href: 'https://github.com/larsonjj/generator-yeogurt#yeogurt-generator---',
-        text: 'documentation'
-      })}} and start mixing up something awesome.
-    </p>
-    <p>
-      <img src="images/yeogurt-swirl.png" width="75px" class="logo" />
-    </p>
-  </div>
+<h1>This is my headline</h1>
+{% endblock %}
+
+{% block byline %}By Kate Sliney{% endblock %}
+
+{% block pubdate %}
+    <time datetime="2020-03-07" pubdate>
+      Mar. 7, 2020
+    </time>
+{% endblock %}
+
+{% block content %}
+<h3>Lives lost in Harvard Park</h3>
+<p>The {{ site.data.harvard_park_homicides|length }} homicides in Harvard Park since 2000 were primarily black and Latino males, but the list includes husbands, wives, fathers, mothers of all ages, and even some small children.</p>
+<div class="card-columns">
+    {% for obj in site.data.harvard_park_homicides %}
+    <div class="card">
+      {% if obj.image %}<img class="card-img-top" src="{{ obj.image }}">{% endif %}
+      <div class="card-body">
+        <a href="http://homicide.latimes.com/post/{{ obj.slug }}" target="_blank">
+            <strong>
+                <h5 class="card-title">{{ obj.first_name }} {{ obj.last_name }}</h5>
+            </strong>
+        </a>
+        <p class="card-text">{{ obj.last_name }}, a {{ obj.age}}-year-old {{ obj.race }} {{ obj.gender }}, died in {{ obj.death_year }}.</p>
+      </div>
+    </div>
+    {% endfor %}
 </div>
-<code class="version">v3.1.2</code>
 {% endblock %}

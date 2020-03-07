@@ -2,7 +2,7 @@
 {% import "_modules/link/link.nunjucks" as link %}
 
 {% block headline %}
-<h1>This is my headline</h1>
+<h1>A South L.A. neighborhood grapples with a wave of violence.</h1>
 {% endblock %}
 
 {% block byline %}By Kate Sliney{% endblock %}
@@ -13,10 +13,22 @@
 {% endblock %}
 
 {% block content %}
-<div class="charts">
-  <div class="inline-chart" id="county-homicides"></div>
-  <div class="inline-chart" id="harvard-park-homicides"></div>
+<h3>One corner. Four killings.</h3>
+<div id="map"></div>
+<section>
+<h3>A South L.A. neighborhood stands apart</h3>
+<p>Harvard Park's 2016 homicide total was its highest in at least 15 years despite a downward trend in killings across L.A. County.</p>
+
+<div class="charts-holder clearfix">
+    <div class="inline-chart" id="county-homicides"></div>
+    <div class="inline-chart" id="harvard-park-homicides"></div>
 </div>
+    <div class="charts">
+          <h4 class="chart-title">County Homicides, 2000-2017</h4>
+          <h4 class="chart-title">Harvard Park Homicides 2000-2017</h4>
+        </div>
+    </div>
+</section>
 
 <section>
     <h3>Lives lost in Harvard Park</h3>
